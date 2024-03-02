@@ -55,3 +55,7 @@
   (Normal JS Utility Functions)
 - useState() - Super Powerful State Variables in React
 - useEffect()
+
+# 2 types of routing in web application
+- Client side Routing 
+- Server side Routing
