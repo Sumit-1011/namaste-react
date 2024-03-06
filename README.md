@@ -1,6 +1,7 @@
 # Namaste React
 
 # Parcel
+
 - Dev Build
 - Local Server
 - HMR = Hot Module Replacement
@@ -22,40 +23,54 @@
 - link - https://parceljs.org/
 
 # Namaste Food
-/**
- * Header
- * - Logo
- * - Nav-items
- * Body
- * - Search
- * - Res-Conatiner
- *      - Res-Card
- *          - Img
- *          - Name, address, rating, , cuisine, delivery time
- * Footer
- * - Copyright
- * - links
- * - address
- * - contact
- */
 
- Two types of Export?Import
+/\*\*
 
- - Defaukt Export/Import
+- Header
+- - Logo
+- - Nav-items
+- Body
+- - Search
+- - Res-Conatiner
+-      - Res-Card
+-          - Img
+-          - Name, address, rating, , cuisine, delivery time
+- Footer
+- - Copyright
+- - links
+- - address
+- - contact
+    \*/
 
- export default Component;
- import Componenet from "path";
+Two types of Export?Import
 
- - Named Export/Import
+- Defaukt Export/Import
 
- export const Component;
- import {Component} form "path"; 
+export default Component;
+import Componenet from "path";
 
- # React Hooks
-  (Normal JS Utility Functions)
+- Named Export/Import
+
+export const Component;
+import {Component} form "path";
+
+# React Hooks
+
+(Normal JS Utility Functions)
+
 - useState() - Super Powerful State Variables in React
 - useEffect()
 
 # 2 types of routing in web application
-- Client side Routing 
+
+- Client side Routing
 - Server side Routing
+
+# Diff. Names same meaning-1
+
+- Chunking
+- Dynamic Bundling
+- Code Splitting
+- lazy loading
+- on demand loading
+- dynamix import

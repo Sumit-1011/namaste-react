@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { RESTRAUNT_API } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 const Body = () => {
@@ -26,6 +27,14 @@ const Body = () => {
         setlistOfRestaurants(json?.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setfilteredRestraunts(json?.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
+
+    const onlineStatus = useOnlineStatus();
+
+    if (onlineStatus === false) return (
+        <h1>
+            Looks like your Internet is not working!
+        </h1>
+    )
 
     return listOfRestaurants.length === 0 ? 
         <Shimmer/>
