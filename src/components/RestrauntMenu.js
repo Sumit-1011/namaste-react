@@ -22,10 +22,12 @@ const RestaurantMenu = () => {
             <p>{cuisines.join(", ")} - {costForTwoMessage}</p>
             <h2>Menu</h2>
             <ul>
-                {itemCards.map(items => <li key = {items?.card?.info?.id}>
-                    {items?.card?.info?.name}  -  {"Rs."} {items?.card?.info?.price/100}</li>)
-                }
-            </ul>
+            {Array.isArray(itemCards) && itemCards.map(items => (
+                <li key={items?.card?.info?.id}>
+                    {items?.card?.info?.name} - {"Rs."} {items?.card?.info?.price / 100}
+                </li>
+            ))}
+        </ul>
         </div>
     );
 };
