@@ -1,10 +1,10 @@
-import RestaurantCard from "./RestaurantCard";
-import {useState, useEffect} from "react";
+import RestaurantCard, {withDiscountLabel} from "./RestaurantCard";
+import {useState, useEffect, useContext} from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { RESTRAUNT_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
-
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
 
@@ -13,6 +13,8 @@ const Body = () => {
     const [filteredRestraunts, setfilteredRestraunts] = useState([]);
     
     const [searchText, setsearchText] = useState("");
+
+    const RestaurantCardDiscount = withDiscountLabel(RestaurantCard);
 
     useEffect(()=>{
         fetchData();
@@ -35,6 +37,8 @@ const Body = () => {
             Looks like your Internet is not working!
         </h1>
     )
+
+    const { setuserName, loggedInUser } = useContext(UserContext);
 
     return listOfRestaurants.length === 0 ? 
         <Shimmer/>
@@ -76,16 +80,31 @@ const Body = () => {
                     </button>  
                 </div>
                 
-                
+                <div className="search p-4 m-4 flex items-center">
+                    <label>Username: </label>
+                        <input type="text" 
+                        placeholder="Type Here..." 
+                        className="border border-black p-2" 
+                        value = {loggedInUser}
+                        onChange={(e) => setuserName(e.target.value)} 
+                        />
+                </div>
             </div>
 
 
             <div className="res-container flex flex-wrap">
                 {
                     filteredRestraunts.map((restaurant) => (
-                    <Link key={restaurant.info.id} to={"/restaurant/"+restaurant.info.id}><RestaurantCard resData={restaurant}/></Link>
+                        <Link key={restaurant.info.id} to={"/restaurant/" + restaurant.info.id}>
+                            {(restaurant.info.aggregatedDiscountInfoV3)
+                            ?
+                                (<RestaurantCardDiscount resData={restaurant} />)
+                                :
+                                (<RestaurantCard resData={restaurant} />)
+                            }
+                        </Link>
                 ))};
-            </div>
+                </div>
         </div>
     );
 };
